@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "slug": "xv-valeria-2026",
+  "template": "xv-arco-princess",
+  "tipo_evento": "xv",
+  "paquete": "armonia",
+  "evento": {
+    "fecha": "2026-06-06T13:00:00",
+    "host": {
+      "nombre": "Ana Lucía"
+    }
+  },
+  "meta": {
+    "title": "Mis XV Años | Ana Lucía",
+    "description": "Acompáñanos a celebrar mis XV años",
+    "lang": "es",
+    "favicon": "favicon.ico"
+  },
+
+  "logo": {
+    "type": "text",
+    "value": "Mis XV Años"
+  },
+  "media": {
+    "hero_background": "quinceañera.jpeg",
+    "presentacion": "princesa.svg",
+    "vestimenta_icon": "9.svg",
+    "galeria": ["gallery1.jpeg", "gallery2.jpeg", "gallery3.jpeg", "gallery4.jpeg", "gallery5.jpeg","gallery6.jpeg"]
+  },
+  "audio": {
+    "enabled": true,
+    "src": "cancion.mp3",
+    "autoplay_on_open": true,
+    "loop": true,
+    "volume": 0.5,
+    "fade_in": true,
+    "icons": {
+      "play": "play.svg",
+      "pause": "pause.svg"
+    }
+  },
+
+  "opening": {
+    "enabled": true,
+    "phrase": {
+      "enabled": true,
+      "text": "Con mucha ilusión…",
+      "duration": 1400
+    },
+    "particles": {
+      "enabled": true,
+      "type": "sparkles",
+      "count": 14
+    },
+    "scroll_hint": {
+      "enabled": true,
+      "text": "Desliza para continuar"
+    }
+  },
+
+  "navbar": {
+    "enabled": true,
+    "logo": {
+      "use_global": true
+    },
+    "items": [
+      { "id": "inicio", "label": "Inicio", "href": "#inicio" },
+      { "id": "ubicacion", "label": "Lugar", "href": "#ubicacion" },
+      { "id": "programa", "label": "Programa", "href": "#programa" },
+      { "id": "regalos", "label": "Regalos", "href": "#regalos" },
+      { "id": "vestimenta", "label": "Vestimenta", "href": "#vestimenta" },
+      { "id": "galeria", "label": "Galería", "href": "#galeria" },
+      { "id": "rsvp", "label": "Asistencia", "href": "#rsvp" }
+    ]
+  },
+
+  "hero": {
+    "enabled": true,
+    "names": {
+      "festejada": "XV Años Ana Lucía"
+    },
+    "countdown_labels": {
+      "dias": "Días",
+      "horas": "Horas",
+      "minutos": "Minutos",
+      "segundos": "Segundos"
+    }
+  },
+
+  "presentacion": {
+    "enabled": true,
+    "titulo": "Tengo el honor de invitarte a celebrar mis XV años",
+    "nombres": "ANA LUCÍA",
+    "frase": "Con la bendición de Dios y en compañía de mis padres:",
+    "padres": {
+      "festejada": ["Carolina Velázquez Fuentes", "Héctor Álvarez Mejía"]
+    },
+    "padrinos": ["Alejandra Velázquez Fuentes","Guadalupe Sebastián Velázquez"],
+    "texto_final": "Este día marca una nueva etapa en mi vida y me encantaría compartirlo contigo.",
+    "labels": {
+      "padres": "Mis Padres",
+      "padrinos": "Mis Padrinos"
+    }
+  },
+
+  "ubicacion": {
+    "enabled": true,
+    "titulo": "Ubicación",
+    "lugares": [
+      {
+        "enabled": true,
+        "tipo": "Ceremonia Religiosa",
+        "hora": "13:00 HRS",
+        "lugar": "Parroquia de la Santísima Trinidad Tepango",
+        "direccion": ["C. 6 Sur 2,", "La Trinidad Tepango,", "74365 Atlixco, Pue."],
+        "mapa": "https://maps.app.goo.gl/HcezGWfbd4v5thhm7"
+      },
+      {
+        "enabled": true,
+        "tipo": "Fiesta",
+        "hora": "15:00 HRS",
+        "lugar": "Salón Jardín El Relicario",
+        "direccion": [
+          "La Soledad 6,",
+          "San Diego Acapulco,",
+          "74365 Atlixco, Pue."
+        ],
+        "mapa": "https://maps.app.goo.gl/UNbRrLwBLebn3mN37"
+      }
+    ]
+  },
+
+  "programa": {
+    "enabled": true,
+    "titulo": "Programa del Evento",
+    "progress_steps": [20, 40, 60, 80, 100],
+    "items": [
+      {
+        "hora": "13:00 hrs",
+        "texto": "Ceremonia Religiosa",
+        "icono": "5.svg",
+        "lado": "left"
+      },
+      {
+        "hora": "15:00 hrs",
+        "texto": "Recepción",
+        "icono": "6.svg",
+        "lado": "right"
+      },
+      {
+        "hora": "18:00 hrs",
+        "texto": "Vals",
+        "icono": "8.svg",
+        "lado": "right"
+      },
+      {
+        "hora": "21:00 hrs",
+        "texto": "Tornamesa",
+        "icono": "7.svg",
+        "lado": "left"
+      }
+    ]
+  },
+
+  "vestimenta": {
+    "enabled": true,
+    "titulo": "Código de Vestimenta",
+    "formal": "FORMAL",
+    "labels": {
+      "mujeres": "",
+      "hombres": ""
+    },
+    "mujeres": "",
+    "hombres": ""
+  },
+
+  "regalos": {
+    "enabled": true,
+    "titulo": "Sugerencia de Regalos",
+    "descripcion": "Gracias por permitirme elegir mi regalo.",
+    "items": [
+      {
+        "icono": "10.svg",
+        "label": "Lluvia de sobres"
+      },
+      { "icono": "11.svg", "label": "Regalo Sorpresa" }
+    ]
+  },
+
+  "galeria": {
+    "enabled": true,
+    "titulo": "Galería"
+  },
+
+  "rsvp": {
+    "enabled": true,
+    "mode": "panel",
+
+    "telefono": "522441183165",
+    "mensaje_base": "Hola, confirmo mi asistencia a los XV años de Ana Lucía.",
+    "fecha_limite": "2026-05-15",
+
+    "qr": { "enabled": false },
+
+    "titulo": "Confirmar asistencia",
+    "texto": "Por favor confirma tu asistencia",
+    "nota": "Te agradeceremos confirmar tu asistencia antes del {{fecha_limite}}.",
+
+    "pase": {
+      "enabled": true,
+      "label": "Pase para"
+    },
+
+    "mesa": {
+      "enabled": false,
+      "label": "Mesa"
+    },
+
+    "botones": {
+      "si": "Sí, asistiré",
+      "no": "No podré asistir"
+    },
+
+    "final": {
+      "titulo": "¡Gracias por confirmar!",
+      "texto": "Hemos reservado estos lugares en su honor.",
+      "firma": "XV Años Ana Lucía"
+    }
+  },
+  "editorial": {
+    "hero": {
+      "enabled": true,
+      "text": "Hoy celebro una nueva etapa en mi vida"
+    },
+    "presentacion": {
+      "enabled": true,
+      "text": "Gracias a quienes me han acompañado siempre"
+    },
+    "ubicacion": {
+      "enabled": true,
+      "text": "El lugar donde todo sucederá"
+    },
+    "programa": {
+      "enabled": true,
+      "text": "Cada momento tiene su magia"
+    },
+    "vestimenta": {
+      "enabled": true,
+      "text": "Una noche para brillar"
+    },
+    "regalos": {
+      "enabled": true,
+      "text": "Lo más importante para mí es compartir este día contigo"
+    },
+    "galeria": {
+      "enabled": false,
+      "text": "Momentos que forman mi historia"
+    },
+    "rsvp": {
+      "enabled": true,
+      "text": "Acompáñanos en este día especial"
+    }
+  },
+  "footer": {
+    "enabled": true,
+    "text": "Diseñado con amor por"
+  }
+}
