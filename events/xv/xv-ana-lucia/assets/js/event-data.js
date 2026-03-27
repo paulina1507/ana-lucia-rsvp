@@ -81,7 +81,7 @@ fetch("assets/js/evento.json")
       if (musicToggle && musicIcon) {
         musicToggle.addEventListener("click", () => {
           if (audio.paused) {
-            audio.play().catch(() => {});
+            audio.play().catch(() => { });
             musicIcon.src = `assets/img/${data.audio.icons.pause}`;
           } else {
             audio.pause();
@@ -119,20 +119,23 @@ fetch("assets/js/evento.json")
       const heroNamesEl = document.getElementById("hero-names");
 
       if (hero.names?.festejada) {
-        const texto = hero.names.festejada;
+        const texto = hero.names.festejada || "";
 
-        let titulo = "";
-        let nombre = texto;
+        const partes = texto.trim().split(" ");
 
-        if (texto.startsWith("XV Años")) {
-          titulo = "XV Años";
-          nombre = texto.replace("XV Años ", "");
-        }
+        const titulo = partes.slice(0, 2).join(" ");
+        const nombre = partes.slice(2).join(" ");
 
         heroNamesEl.innerHTML = `
+  <span class="hero-title">${titulo}</span>
+  <span class="hero-name">${nombre}</span>
+`;
+        setTimeout(() => {
+          heroNamesEl.innerHTML = `
     <span class="hero-title">${titulo}</span>
     <span class="hero-name">${nombre}</span>
   `;
+        }, 50);
       } else if (hero.names?.novia && hero.names?.novio) {
         heroNamesEl.textContent = `${hero.names.novia} & ${hero.names.novio}`;
       }
@@ -245,18 +248,16 @@ fetch("assets/js/evento.json")
               <h3 class="ubicacion-subtitle">${lugar.tipo}</h3>
               <div class="ubicacion-hora">${lugar.hora}</div>
               <div class="ubicacion-lugar">${lugar.lugar}</div>
-              ${
-                lugar.direccion?.length
-                  ? `<div class="ubicacion-direccion">${lugar.direccion.join(
-                      "<br>",
-                    )}</div>`
-                  : ""
-              }
-              ${
-                lugar.mapa
-                  ? `<a href="${lugar.mapa}" target="_blank" class="btn-ubicacion">Ver ubicación</a>`
-                  : ""
-              }
+              ${lugar.direccion?.length
+              ? `<div class="ubicacion-direccion">${lugar.direccion.join(
+                "<br>",
+              )}</div>`
+              : ""
+            }
+              ${lugar.mapa
+              ? `<a href="${lugar.mapa}" target="_blank" class="btn-ubicacion">Ver ubicación</a>`
+              : ""
+            }
             </div>
           `,
           );
@@ -358,6 +359,17 @@ fetch("assets/js/evento.json")
 
     if (isEnabled(data.rsvp)) {
       const rsvp = data.rsvp;
+      const modoWhatsApp =
+        rsvp?.pase?.enabled === false &&
+        rsvp?.mesa?.enabled === false &&
+        rsvp?.qr?.enabled === false;
+      if (modoWhatsApp) {
+        document.querySelectorAll(".rsvp-guest-name").forEach((el) => {
+          el.style.display = "none";
+        });
+        const label = document.getElementById("rsvpNombreLabel");
+        if (label) label.style.display = "block";
+      }
       const form = document.getElementById("rsvp-form");
 
       if (form) {
@@ -382,7 +394,51 @@ fetch("assets/js/evento.json")
           rsvp.botones?.si || "";
         form.querySelector(".rsvp-btn.no").textContent = rsvp.botones?.no || "";
       }
+      if (modoWhatsApp) {
+        const btnYes = document.querySelector(".rsvp-btn.yes");
+        const btnNo = document.querySelector(".rsvp-btn.no");
 
+        const telefono = rsvp.telefono;
+
+        const enviarWhatsApp = (confirmacion) => {
+          const inputNombre = document.getElementById("rsvpNombreInput");
+
+          let nombre = inputNombre?.value?.trim();
+
+          if (!nombre) {
+            alert("Por favor escribe tu nombre 😊");
+            return;
+          }
+
+          const limpiarNombre = (n) => n.replace(/^Familia\s+/i, "");
+          const nombreLimpio = limpiarNombre(nombre);
+
+          const nombreEvento = window.__EVENT_DATA__?.evento?.host?.nombre || "";
+
+          const mensajeBase =
+            confirmacion === "Sí asistiré"
+              ? `Hola, con gusto asistiré a los XV años de ${nombreEvento}.`
+              : `Hola, lamentablemente no podré acompañarles en los XV años de ${nombreEvento}.`;
+          const mensaje = `${mensajeBase}
+
+Invitado: ${nombreLimpio}`;
+
+          const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+          window.open(url, "_blank");
+        };
+        btnYes?.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          enviarWhatsApp("Sí asistiré");
+        });
+
+        btnNo?.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          enviarWhatsApp("No podré asistir");
+        });
+      }
       const passLabel = document.getElementById("rsvpPassLabel");
       const passValue = document.getElementById("rsvpPassValue");
       const tableLabel = document.getElementById("rsvpTableLabel");
