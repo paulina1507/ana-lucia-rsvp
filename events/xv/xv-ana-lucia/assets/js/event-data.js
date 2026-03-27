@@ -81,7 +81,7 @@ fetch("assets/js/evento.json")
       if (musicToggle && musicIcon) {
         musicToggle.addEventListener("click", () => {
           if (audio.paused) {
-            audio.play().catch(() => { });
+            audio.play().catch(() => {});
             musicIcon.src = `assets/img/${data.audio.icons.pause}`;
           } else {
             audio.pause();
@@ -248,16 +248,18 @@ fetch("assets/js/evento.json")
               <h3 class="ubicacion-subtitle">${lugar.tipo}</h3>
               <div class="ubicacion-hora">${lugar.hora}</div>
               <div class="ubicacion-lugar">${lugar.lugar}</div>
-              ${lugar.direccion?.length
-              ? `<div class="ubicacion-direccion">${lugar.direccion.join(
-                "<br>",
-              )}</div>`
-              : ""
-            }
-              ${lugar.mapa
-              ? `<a href="${lugar.mapa}" target="_blank" class="btn-ubicacion">Ver ubicación</a>`
-              : ""
-            }
+              ${
+                lugar.direccion?.length
+                  ? `<div class="ubicacion-direccion">${lugar.direccion.join(
+                      "<br>",
+                    )}</div>`
+                  : ""
+              }
+              ${
+                lugar.mapa
+                  ? `<a href="${lugar.mapa}" target="_blank" class="btn-ubicacion">Ver ubicación</a>`
+                  : ""
+              }
             </div>
           `,
           );
@@ -413,7 +415,8 @@ fetch("assets/js/evento.json")
           const limpiarNombre = (n) => n.replace(/^Familia\s+/i, "");
           const nombreLimpio = limpiarNombre(nombre);
 
-          const nombreEvento = window.__EVENT_DATA__?.evento?.host?.nombre || "";
+          const nombreEvento =
+            window.__EVENT_DATA__?.evento?.host?.nombre || "";
 
           const mensajeBase =
             confirmacion === "Sí asistiré"
@@ -463,6 +466,14 @@ Invitado: ${nombreLimpio}`;
         passInfo.remove();
       }
 
+      const nombreWrapper = document.getElementById("rsvpNombreWrapper");
+
+      const ocultarInputNombre =
+        rsvp.pase?.enabled === true || rsvp.mesa?.enabled === true;
+
+      if (ocultarInputNombre) {
+        nombreWrapper?.remove();
+      }
       const rsvpNames = document.getElementById("rsvp-names");
       const rsvpFinalTitle = document.getElementById("rsvp-final-title");
       const rsvpFinalText = document.getElementById("rsvp-final-text");
